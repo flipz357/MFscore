@@ -5,13 +5,13 @@ LOGLEVEL=20
 
 PATH_GEN=$1
 PATH_AMR_REF=$2
-PATH_REF=$3
 
 FILE_GEN=$(basename $PATH_GEN)
 FILE_AMR=$(basename $PATH_AMR_REF)
 
 
 cd src
+
 python clean.py \
     -generated_text_file_path ../$PATH_GEN \
     -source_amr_file_path ../$PATH_AMR_REF \
@@ -20,24 +20,21 @@ python clean.py \
     -acronym_file_paths ../data/dict/country_adjectivals.txt \
     -log_level $LOGLEVEL
 
-
 python parse.py -text_file_path tmp/$FILE_GEN.clean \
     -out_file_path tmp/$FILE_GEN.clean.stog_parsed \
     -log_level $LOGLEVEL
 
-
-/opt/slurm/bin/srun -p compute --mem=30000 python score_form_per_sent.py \
+python score_form_per_sent.py \
     -text_file_path tmp/$FILE_GEN.clean \
     -out_file_path tmp/$FILE_GEN.clean.lm_score-$LM \
     -LM $LM \
     -log_level $LOGLEVEL
 
-/opt/slurm/bin/srun -p compute --mem=30000 python score_form_per_sent.py \
+python score_form_per_sent.py \
     -text_file_path tmp/$FILE_AMR-sents.clean \
     -out_file_path tmp/$FILE_AMR-sents.clean.lm_score-$LM \
     -LM $LM \
     -log_level $LOGLEVEL
-
 
 python compute_acceptable_ratio.py \
     -score_file_path tmp/$FILE_GEN.clean.lm_score-$LM \
