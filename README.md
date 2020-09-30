@@ -30,7 +30,7 @@ Simply call:
 ```
 ./mfscore_for_genSent_vs_refSent.sh <generated_file> <reference_file>
 ```
-where `<generated_file>` and `<reference_file>` are files that contain one sentence per line.
+where `<generated_file>` and `<reference_file>` are files that contain one sentence per line. See `example.txt`
 
 ## MF score for evaluation of AMR-to-text generation
 
@@ -52,7 +52,7 @@ If you want to run the fine grained semantic evaluation (e.g., how good is your 
 ./fined_grained_semantic_analyis.sh <amr-file-pred> <amr-file-ref>
 ```
 
-where both input files are AMR corpora (AMRs separated by an empty line, standard AMR Sembank). Chances are that you have already generated them when using the MF score, please look in `src/tmp/`.
+where both input files are AMR corpora (AMRs separated by an empty line, standard AMR Sembank, see `example.txt`). Chances are that you have already generated them when using the MF score, please look in `src/tmp/`.
 
 ### Citation
 
