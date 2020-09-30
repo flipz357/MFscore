@@ -8,8 +8,6 @@ This repo **puts you in control of what you expect of your NLG system**:
 Should it excel more in **Form** or more in **Meaning**, or both equally? It's **your choice**. 
 
 
-
-
 ## Preparation
 
 We recommend setting up a virtual environment to install the requirements
@@ -40,7 +38,7 @@ Simply call:
 ```
 ./mfscore_for_genSent_vs_refAMR.sh <generated_file> <reference_file>
 ```
-where `<generated_file>` contains one sentence per line and `<reference_file>` contains AMRs separated by an empty line (standard AMR Sembank).
+where `<generated_file>` contains one sentence per line and `<reference_file>` contains AMRs separated by an empty line (standard AMR Sembank, see `example.txt`).
 
 
 
