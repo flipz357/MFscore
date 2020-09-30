@@ -19,12 +19,12 @@ class ScorerFactory():
         return scorer
 
 
-class BertScorer():
+class BERTScorer():
 
     def __init__(self, modelstring="bert-base-cased"):
         from transformers import AutoTokenizer, BertForMaskedLM
-        self.tok = AutoTokenizer.from_pretrained("bert-base-cased")
-        self.bert = BertForMaskedLM.from_pretrained("bert-base-cased")
+        self.tok = AutoTokenizer.from_pretrained(modelstring)
+        self.bert = BertForMaskedLM.from_pretrained(modelstring)
 
     def sent_score(self, sent):
         s = 0.0
@@ -47,7 +47,7 @@ class GPT2Scorer():
     
     def __init__(self, modelstring="gpt2", device="cpu", batch_size=1):
         from lm_scorer.models.auto import AutoLMScorer as LMScorer
-        self.scorer = LMScorer.from_pretrained("gpt2", device=device, batch_size=batch_size)
+        self.scorer = LMScorer.from_pretrained(modelstring, device=device, batch_size=batch_size)
 
     def sent_score(self, sent):
         ms = self.scorer.sentence_score(sent, reduce="mean")
