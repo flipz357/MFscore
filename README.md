@@ -1,4 +1,4 @@
-# Decomposable MF score for explainable evaluation of text generation
+# MF score for explainable evaluation of text generation
 
 For some teachers, the **Form** of an essay may be very important, for others, the **Meaning** may be most important. 
 Most, however, take a balanced approach and rate the essay with regard to both **Form** and **Meaning**.
