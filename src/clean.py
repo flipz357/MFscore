@@ -104,28 +104,45 @@ if __name__ == "__main__":
     
     
     nlp.tokenizer = nlp.tokenizer.tokens_from_list
-
     
     for i,toks in enumerate(lines):
         newtoks = []
         doc = nlp([t.lower() for t in toks])
         for j, tok in enumerate(toks):
+            
+            # sentence start -> capitalize
             if j == 0:
                 newtoks.append(tok.capitalize())
+            
+            # multi sentence sentence start -> capitalize
             elif newtoks[-1] == ".":
                 newtoks.append(tok.capitalize())
+
+            # tok is PROPN ---> capitalize or uppercase if in acronyms
             elif doc[j].pos_ == "PROPN":
+                # nato ---> NATO
+                if tok.upper() in acros:
+                    newtoks.append(tok.upper())
+                # barack obama ---> Barack Obama
+                else:
+                    newtoks.append(tok.capitalize())                
+            
+            #The chinese team ---> The Chinese team
+            elif tok.capitalize() in acros:
                 newtoks.append(tok.capitalize())
-                
+            
+            # if AMR ref and sentences are provided we search for some uppercase
+            # or capitlized tokens that we may have missed with the above steps
+            # e.g. "The us_NOUN wins the worldcup" (POS error for "us"), we look if in
+            # the ref AMR there is (n / name :op1 "US") and then we can rectify this
             else:
                 if "\""+tok.upper()+"\"" in dh.safe_get(amrreflines, i):
                     newtoks.append(tok.upper())
                 elif "\""+tok.capitalize()+"\"" in dh.safe_get(amrreflines, i):
                     newtoks.append(tok.capitalize())
-                elif tok.capitalize() in acros:
-                    newtoks.append(tok.capitalize())
                 else:
                     newtoks.append(tok)
+
         true_cased.append(newtoks)
         if (i + 1) % 100 == 0:
             logger.info("{}/{} sentences cleaned and true-cased".format(i+1, len(lines)))
