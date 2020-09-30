@@ -1,0 +1,4 @@
+# sents vs sents
+./mfscore_for_genSent_vs_refSent.sh data/example-data/sys.txt data/example-data/ref.txt
+
+# sents vs AMRs
