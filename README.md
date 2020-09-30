@@ -16,9 +16,9 @@ We recommend setting up a virtual environment to install the requirements
 
 2. download spacy model `en_core_web_sm`  (it's used for true-casing)
 
-3. clone [amrlib](https://github.com/bjascob/amrlib), isntall it and install a parser model. Follow their instructions (I tested with version `0.0.1`).
+3. install [amrlib](https://github.com/bjascob/amrlib), and install a parser model. Simply follow their instructions (I tested with version `0.0.1`).
 
-4. clone [amr-metric-suite](https://github.com/flipz357/amr-metric-suite) here
+4. clone [amr-metric-suite](https://github.com/flipz357/amr-metric-suite) here: `git clone https://github.com/flipz357/amr-metric-suite`
 
 ## MF score for evaluation of general sentence generation
 
