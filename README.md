@@ -12,7 +12,7 @@ Should it excel more in **Form** or more in **Meaning**, or both equally? It's *
 
 We recommend setting up a virtual environment to install the requirements
 
-1. run `pip -r requirements.txt`
+1. run `pip install -r requirements.txt`
 
 2. download spacy model `en_core_web_sm`  (it's used for true-casing)
 
