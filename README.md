@@ -44,6 +44,8 @@ where `<generated_file>` contains one sentence per line and `<reference_file>` c
 
 ## Additional information
 
+### Fine-grained semantic analysis (e.g., coref, Word senses, SRL, etc.)
+
 If you want to run the fine grained semantic evaluation (e.g., how good is your generated text w.r.t. to coreference?), run
 
 ```
@@ -52,9 +54,23 @@ If you want to run the fine grained semantic evaluation (e.g., how good is your 
 
 where both input files are AMR corpora (AMRs separated by an empty line, standard AMR Sembank, see `example.txt`). Chances are that you have already generated them when using the MF score, please look in `src/tmp/`.
 
-### Citation
+### Speed of implementation
 
-If you like our idea, please consider citing
+Current impementation is **not** optimised for speed. Consider
+
+- **using GPU** (not needed but highly recommended.... both parser and LM will profit, see below)
+- perhaps: bucketing sentences into buckets of same lengths so that the LMs can be used with mini-batches
+
+Rough statistics for processing 1000s of current implementation
+
+|           |  cpu    |  gpu  |
+| ---       |  ---    |  ---  |
+|parse (t5) | 12000s  |  992s |
+|S2match    | 110s    |  -    |
+
+## Citation
+
+If you like this project, please consider citing
 
 ```
 @article{opitz2020towards,

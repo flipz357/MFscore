@@ -5,7 +5,9 @@ import sys
 import argparse
 from log_helper import get_logger
 from sent_scorers import ScorerFactory
+import logging
 
+logger = logging.getLogger(__name__)
 
 def build_arg_parser():
 
@@ -21,7 +23,7 @@ def build_arg_parser():
             , default="tmp/out.gpt2_form_scores"
             , help='file path to text')
     
-    parser.add_argument('-LM'
+    parser.add_argument('-lm_uri'
             , type=str
             , default="gpt2"
             , choices=["bert-large-cased", "gpt2"]
@@ -42,22 +44,18 @@ if __name__ == "__main__":
     args = build_arg_parser().parse_args()
     logger = get_logger("LMscoreLogger", args.log_level)
 
-
     clean_sents_fp = args.text_file_path
     lines = readf(clean_sents_fp).split("\n")
     out = []
 
-    logger.info("loading LM ({}) and scoring {}".format(args.LM, args.text_file_path))
-    scorer = ScorerFactory().get_scorer(args.LM) 
+    logger.info("loading LM ({}) and scoring {}".format(args.lm_uri, args.text_file_path))
     
-    out = []
-
-    for i,l in enumerate(lines):
-        ms = scorer.sent_score(l)
-        out.append(str(ms))
-        if (i + 1) % 100 == 0:
-            logger.info("{}/{} sentences scored".format(i+1, len(lines)))
+    scorer = ScorerFactory().get_scorer(args.lm_uri) 
+    
+    out = scorer.score_sents(lines)
+    out = [str(x) for x in out] 
     
     with open(args.out_file_path, "w") as f:
         f.write("\n".join(out))
+    
     logger.info("finished, output written to {}".format(args.out_file_path))
