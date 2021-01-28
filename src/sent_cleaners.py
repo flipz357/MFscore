@@ -1,6 +1,3 @@
-import torch
-import numpy as np
-
 class CleanerFactory():
 
     def __init__(self):
@@ -64,6 +61,4 @@ class BasicCleaner():
             detok = self.md.detokenize(newtoks)
             detokenized_and_true_cased.append(detok)
         return detokenized_and_true_cased
-
-
 

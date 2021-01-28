@@ -1,6 +1,5 @@
 import sys
 import data_helpers as dh
-import spacy
 import argparse
 from log_helper import get_logger
 from sent_cleaners import CleanerFactory

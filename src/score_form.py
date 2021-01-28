@@ -1,5 +1,3 @@
-import torch
-from lm_scorer.models.auto import AutoLMScorer as LMScorer
 from data_helpers import readf
 import sys
 import argparse
