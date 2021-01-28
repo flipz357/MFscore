@@ -61,7 +61,7 @@ Current impementation is **not** optimised for speed. Consider
 - **using GPU** (not needed but highly recommended.... both parser and LM will profit, see below)
 - perhaps: bucketing sentences into buckets of same lengths so that the LMs can be used with mini-batches
 
-Rough statistics for processing 1000s of current implementation
+Rough statistics for processing 1000 sentences of current implementation
 
 |           |  cpu    |  gpu  |
 | ---       |  ---    |  ---  |
