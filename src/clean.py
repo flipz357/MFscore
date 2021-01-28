@@ -21,16 +21,6 @@ def build_arg_parser():
             , help='input file either AMR sembank (\"amr-bank\") \
                     or sent per line (\"sent-per-line\")')
 
-    """
-    parser.add_argument('-source_amr_file_path'
-            , type=str
-            , default = None	
-            , nargs='?'
-            , help='file path to potential source file,\
-                    it is only used to look up some\
-                    acronyms like NATO for better\
-                    true casing')
-    """
     parser.add_argument('-out_file_path'
             , type=str
             , nargs='?'
@@ -42,19 +32,12 @@ def build_arg_parser():
             , nargs='?'
             , default = "basic"
             , help='preprocessing type') 
-    """
-    parser.add_argument('-out_file_path_ref_sents'
-            , type=str
-            , nargs='?'
-            , default = "tmp/out.ref.clean"
-            , help='output file path for AMR ref sentences') 
     
-    """
     parser.add_argument('-acronym_file_paths'
             , type=str
             , nargs='+'
             , default = None
-            , help='file path to acronyms that are\
+            , help='file pathes to acronyms that are\
                     fully upper-cased') 
     
     parser.add_argument('-log_level'
@@ -83,18 +66,24 @@ if __name__ == "__main__":
         sents = [l.split(" ::snt ")[1].split("\n")[0] for l in amrreflines]
     else:
         sents = dh.readf(args.input_file_path).split("\n")
+    
+    capitalization_help = set()
+    for fi in args.acronym_file_paths:
+        words = set(dh.readf(fi).split("\n"))
+        capitalization_help.update(words)
 
-    cleaner = CleanerFactory().get_cleaner(cleaner_uri="basic")
+    cleaner = CleanerFactory().get_cleaner(cleaner_uri="basic"
+            , acronyms=capitalization_help)
     cleaned = cleaner.clean_sents(sents)
 
     #remove possible empty trailing lines
     while not cleaned[-1]:
         cleaned = cleaned[:-1]
     string = "\n".join(cleaned)
-    #if string.endswith("\n"):
-    #    string = "\n".join(string.split("\n")[:-1])
+    
     with open(args.out_file_path, "w") as f:
         f.write(string)
+    
     logger.info("finished... result written to {}".format(args.out_file_path))
 
 

@@ -46,6 +46,7 @@ if __name__ == "__main__":
 
     sents = readf(sents_fp).split("\n")
     
+    logger.info("loading amr parser")
     
     parser = ParserFactory().get_parser(args.parser_uri)
     
@@ -56,4 +57,5 @@ if __name__ == "__main__":
     
     with open(args.out_file_path,"w") as f:
         f.write(string)
+
     logger.info("parsing finished, output written to {}".format(args.out_file_path))

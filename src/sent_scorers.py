@@ -1,5 +1,8 @@
 import torch
 import numpy as np
+import logging
+
+logger = logging.getLogger(__name__)
 
 class ScorerFactory():
 
@@ -45,18 +48,21 @@ class BERTScorer():
 
             if len(ss) == 0:
                 s =  0.0
+            
             scores.append(s / len(ss))
             
             if (sent_num + 1) % 100 == 0:
-                logger.info("{}/{} sentences scored".format(sent_num + 1, len(lines)))
+                logger.info("{}/{} sentences scored".format(sent_num + 1
+                    , len(sents)))
         return scores
         
 
 class GPT2Scorer():
     
-    def __init__(self, scorer_uri="gpt2", device="cpu", batch_size=1):
+    def __init__(self, scorer_uri="gpt2", device="cpu", batch_size=16):
         from lm_scorer.models.auto import AutoLMScorer as LMScorer
-        self.scorer = LMScorer.from_pretrained(scorer_uri, device=device, batch_size=batch_size)
+        self.scorer = LMScorer.from_pretrained(scorer_uri, device=device
+                , batch_size=batch_size)
 
     def score_sents(self, sents):
         scores = []
@@ -64,7 +70,7 @@ class GPT2Scorer():
             ms = self.scorer.sentence_score(sent, reduce="mean")
             scores.append(ms)
             if (sent_num + 1) % 100 == 0:
-                logger.info("{}/{} sentences scored".format(sent_num + 1, len(lines)))
+                logger.info("{}/{} sentences scored".format(sent_num + 1, len(sents)))
         return scores
 
 
