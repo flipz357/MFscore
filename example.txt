@@ -5,4 +5,4 @@
 ./mfscore_for_genSent_vs_refAMR.sh data/example-data/sys.txt data/example-data/ref.amr
 
 # fine grained AMR analysis AMRs generated vs AMRs (possibly generated) reference
-./fined_grained_semantic_analyis.sh src/tmp/sys.txt.clean.stog_parsed src/tmp/ref.txt.clean.stog_parsed
+./fined_grained_semantic_analyis.sh src/tmp/sys.txt.clean.parsed src/tmp/ref.txt.clean.parsed
