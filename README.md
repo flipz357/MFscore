@@ -43,7 +43,7 @@ Simply call:
 where `<generated_file>` contains one sentence per line and `<reference_file>` contains AMRs separated by an empty line (standard AMR Sembank, see `example.txt`).
 
 
-## Fine-grained semantic analysis (e.g., coref, Word senses, SRL, etc.)
+## Fine-grained semantic analysis (e.g., coref F1, Word senses F1, SRL F1, etc.)
 
 If you want to run the fine grained semantic evaluation (e.g., how good is your generated text w.r.t. to coreference?), run
 
