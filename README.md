@@ -64,7 +64,7 @@ Current impementation is **not** optimised for speed. Consider
 
 Rough statistics for processing 1000 sentences of current implementation
 
-|           |  cpu    |  gpu  |
+|           |  cpu    |  gpu (Titan Xp)  |
 | ---       |  ---    |  ---  |
 |parse (t5) | 12000s  |  992s |
 |S2match    | 110s    |  -    |
