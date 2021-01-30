@@ -66,7 +66,7 @@ where both input files are AMR corpora (AMRs separated by an empty line, standar
 
 - currently GPT-2 base is used
     - but all unidirectional and bidirectional (->(Ro)BERT(a)-X-X) models that are part of huggingface library can be used by setting `-lm_uri` in the main MF score scripts
-    - if you want custom form score: similar to custom parserm just add another class in `src/sent_scorers.py` that has a function `score_sents(strings)` that projects the n strings onto n floats
+    - if you want custom form score: similar to custom parser just add another class in `src/sent_scorers.py` that has a function `score_sents(strings)` that projects the n strings onto n floats
 
 ### Speed of implementation
 
