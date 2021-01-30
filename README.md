@@ -16,7 +16,7 @@ We recommend setting up a virtual environment to install the requirements
 
 2. download spacy model `en_core_web_sm`  (it's used for true-casing)
 
-3. install [amrlib](https://github.com/bjascob/amrlib), and install a parser model. Simply follow their instructions (I tested with version `0.0.1`).
+3. install [amrlib](https://github.com/bjascob/amrlib), and install a parser model. Simply follow their instructions (I tested with version `0.5.0`).
 
 4. clone [amr-metric-suite](https://github.com/flipz357/amr-metric-suite) here: `git clone https://github.com/flipz357/amr-metric-suite`
 
@@ -54,6 +54,19 @@ If you want to run the fine grained semantic evaluation (e.g., how good is your 
 where both input files are AMR corpora (AMRs separated by an empty line, standard AMR Sembank, see `example.txt`). Chances are that you have already generated them when using the MF score, please look in `src/tmp/`.
 
 ## Additional information
+
+### Using another parser
+
+- currently the seq2seq parser based on t5 transformer is set as default, since it provides robust and good parses.
+- other parsers can be used, 
+    - if pre-installed (part of amrlib) then by setting `-parser_uri` in the main MF score scripts
+    - if custom parser: just add another class in `src/sent_parsers.py` that has a function `parse_sents(strings)` that projects n strings onto n AMR graphs in Penman string format
+
+### Using another LM to score Form
+
+- currently GPT-2 base is used
+    - but all unidirectional and bidirectional (->(Ro)BERT(a)-X-X) models that are part of huggingface library can be used
+    - if you want custom form score: similar to custom parserm just add another class in `src/sent_scorers.py` that has a function `score_sents(strings)` that projects the n strings onto n floats
 
 ### Speed of implementation
 
