@@ -20,6 +20,7 @@ We recommend setting up a virtual environment to install the requirements
 
 4. clone [amr-metric-suite](https://github.com/flipz357/amr-metric-suite) here: `git clone https://github.com/flipz357/amr-metric-suite`
 
+
 ## MF score for evaluation of general sentence generation
 
 ![Score computation](img/score_pipeline_outline_sent_sent-crop.png)
@@ -29,6 +30,7 @@ Simply call:
 ./mfscore_for_genSent_vs_refSent.sh <generated_file> <reference_file>
 ```
 where `<generated_file>` and `<reference_file>` are files that contain one sentence per line. See `example.txt`
+
 
 ## MF score for evaluation of AMR-to-text generation
 
@@ -41,10 +43,7 @@ Simply call:
 where `<generated_file>` contains one sentence per line and `<reference_file>` contains AMRs separated by an empty line (standard AMR Sembank, see `example.txt`).
 
 
-
-## Additional information
-
-### Fine-grained semantic analysis (e.g., coref, Word senses, SRL, etc.)
+## Fine-grained semantic analysis (e.g., coref, Word senses, SRL, etc.)
 
 If you want to run the fine grained semantic evaluation (e.g., how good is your generated text w.r.t. to coreference?), run
 
@@ -53,6 +52,8 @@ If you want to run the fine grained semantic evaluation (e.g., how good is your 
 ```
 
 where both input files are AMR corpora (AMRs separated by an empty line, standard AMR Sembank, see `example.txt`). Chances are that you have already generated them when using the MF score, please look in `src/tmp/`.
+
+## Additional information
 
 ### Speed of implementation
 
