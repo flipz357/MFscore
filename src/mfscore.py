@@ -6,7 +6,7 @@ from log_helper import get_logger
 def build_arg_parser():
 
     parser = argparse.ArgumentParser(
-            description='normalize LM assessment to ratio')
+            description='compute final MFscore')
 
     parser.add_argument('-form_score_file_path'
             , type=str
