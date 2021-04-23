@@ -11,7 +11,6 @@ graphviz==0.14.1
 idna==2.10
 importlib-metadata==1.7.0
 joblib==0.16.0
-lm-scorer==0.4.2
 murmurhash==1.0.2
 nltk==3.5
 numpy==1.19.1

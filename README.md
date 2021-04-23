@@ -4,22 +4,22 @@ For some, the **Form** of a generated text may be very important, for others, th
 
 Most, however, take a balanced approach and rate a text with regard to both **Form** and **Meaning**.
 
-This repo **puts you in control of what you expect of your NLG system**: 
-
-Should it excel more in **Form** or more in **Meaning**, or both equally? It's **your choice**. 
+This repo **aims at better assessing what an NLG system excels in**: Form or Meaning?
 
 
 ## Preparation
 
 We recommend setting up a virtual environment to install the requirements
 
-1. run `pip install -r requirements.txt`. *Note*: Works with `pip<21.x.x`. If `pip>=21.x.x` please run `pip install -r requirements.txt --use-deprecated=legacy-resolver`. 
+1. run `pip install -r requirements.txt`. 
 
-2. download spacy model `en_core_web_sm`  (it's used for true-casing): `python -m spacy download en_core_web_sm`
+2. run `pip install -r requirements_no_deps.txt --no-deps`
 
-3. install [amrlib](https://github.com/bjascob/amrlib), and install a parser model. Simply follow their instructions (I tested with version `0.5.0`).
+3. download spacy model `en_core_web_sm`  (it's used for true-casing): `python -m spacy download en_core_web_sm`
 
-4. clone [amr-metric-suite](https://github.com/flipz357/amr-metric-suite) here: `git clone https://github.com/flipz357/amr-metric-suite`
+4. install [amrlib](https://github.com/bjascob/amrlib), and install a parser model. Simply follow their instructions (I tested with version `0.5.0`).
+
+5. clone [amr-metric-suite](https://github.com/flipz357/amr-metric-suite) here: `git clone https://github.com/flipz357/amr-metric-suite`
 
 
 ## MF score for evaluation of general sentence generation
