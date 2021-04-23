@@ -13,9 +13,9 @@ Should it excel more in **Form** or more in **Meaning**, or both equally? It's *
 
 We recommend setting up a virtual environment to install the requirements
 
-1. run `pip install -r requirements.txt`
+1. run `pip install -r requirements.txt`. *Note*: Works with `pip<21.x.x`. If `pip>=21.x.x` please run `pip install -r requirements.txt --use-deprecated=legacy-resolver`. 
 
-2. download spacy model `en_core_web_sm`  (it's used for true-casing)
+2. download spacy model `en_core_web_sm`  (it's used for true-casing): `python -m spacy download en_core_web_sm`
 
 3. install [amrlib](https://github.com/bjascob/amrlib), and install a parser model. Simply follow their instructions (I tested with version `0.5.0`).
 
